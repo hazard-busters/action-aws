@@ -15,6 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       # Set up SSH key from secret
+      # SSH key is used to authenticate the connection to EC2 instance
       - name: Set up SSH key
         env:
           SSH_KEY: ${{ secrets.EC2_SSH_KEY }} # SSH key for EC2 instance
