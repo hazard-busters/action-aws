@@ -39,23 +39,13 @@ jobs:
       # SSH key is used to authenticate the connection to EC2 instance
       - name: SSH to EC2 and deploy Docker
         run: |
-          ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}
-            "set -e
-            cd /home/ec2-user/ml_app || exit 0
-
-            # Install Docker if not already installed
-            sudo yum update -y
-            sudo dnf install -y docker
-            sudo service docker start
-
-            # Stop & remove old container if exists
-            sudo docker rm -f linear-reg-api || true
-
-            # Build Docker image
-            sudo docker build -t linear-reg-api .
-
-            # Run Docker container
-            sudo docker run -d -p 8000:8000 --name linear-reg-api linear-reg-api
-
-            # List running containers
+          ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} \
+            "set -e; \
+            cd /home/ec2-user/ml_app || exit 0; \
+            sudo yum update -y; \
+            sudo dnf install -y docker; \
+            sudo service docker start; \
+            sudo docker rm -f linear-reg-api || true; \
+            sudo docker build -t linear-reg-api .; \
+            sudo docker run -d -p 8000:8000 --name linear-reg-api linear-reg-api; \
             sudo docker ps"
