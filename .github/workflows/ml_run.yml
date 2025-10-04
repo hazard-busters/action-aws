@@ -21,7 +21,7 @@ jobs:
           SSH_KEY: ${{ secrets.EC2_SSH_KEY }} # SSH key for EC2 instance
         run: |
           echo "$SSH_KEY" > key.pem
-          chmod 600 key.pem
+          chmod 400 key.pem
 
       # Copy repository files to EC2
       # SSH key is used to authenticate the connection to EC2 instance
