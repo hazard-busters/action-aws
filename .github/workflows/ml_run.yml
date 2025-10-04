@@ -39,8 +39,8 @@ jobs:
       # SSH key is used to authenticate the connection to EC2 instance
       - name: SSH to EC2 and deploy Docker
         run: |
-          ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }} << 'EOF'
-            set -e
+          ssh -o StrictHostKeyChecking=no -i key.pem ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}
+            "set -e
             cd /home/ec2-user/ml_app || exit 0
 
             # Install Docker if not already installed
@@ -58,5 +58,4 @@ jobs:
             sudo docker run -d -p 8000:8000 --name linear-reg-api linear-reg-api
 
             # List running containers
-            sudo docker ps
-          EOF 
+            sudo docker ps"
