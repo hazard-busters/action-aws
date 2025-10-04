@@ -45,7 +45,7 @@ jobs:
 
             # Install Docker if not already installed
             sudo yum update -y
-            sudo amazon-linux-extras install docker -y
+            sudo dnf install -y docker
             sudo service docker start
 
             # Stop & remove old container if exists
