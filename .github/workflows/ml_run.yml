@@ -33,7 +33,7 @@ jobs:
       # SSH key is used to authenticate the connection to EC2 instance
       - name: Copy files to EC2
         run: | # 
-          scp -o StrictHostKeyChecking=no -i key.pem -r $(ls -A | grep -vE "^(\.git|\.github)$") ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USERNAME }}/ml_app
+          scp -o StrictHostKeyChecking=no -i key.pem -r $(ls -A | grep -vE "^(\.git|\.github|key\.pem)$") ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USERNAME }}/ml_app
 
       # SSH to EC2, install Docker, build and run container
       # SSH key is used to authenticate the connection to EC2 instance
