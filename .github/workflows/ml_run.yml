@@ -47,6 +47,8 @@ jobs:
             sudo service docker start; \
             sudo docker rm -f linear-reg-api || true; \
             sudo docker build -t linear-reg-api .; \
+            sudo docker ps --filter "publish=8000" -q | xargs -r sudo docker stop; \
+            sudo docker ps -a --filter "publish=8000" -q | xargs -r sudo docker rm; \
             sudo docker run -d -p 8000:8000 --name linear-reg-api linear-reg-api; \
             sudo docker ps"
 
