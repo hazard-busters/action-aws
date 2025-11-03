@@ -57,5 +57,5 @@ jobs:
             echo "--------------------------------------------"
             echo "FastAPI app is deployed successfully!"
             echo "Access it in your browser at:"
-            echo "http://${{ secrets.EC2_HOST }}:8000/docs"
+            echo "[Open FastAPI Docs](http://${{ secrets.EC2_HOST }}:8000/docs)" >> $GITHUB_STEP_SUMMARY
             echo "--------------------------------------------"
