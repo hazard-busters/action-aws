@@ -6,7 +6,7 @@ from sklearn.linear_model import LinearRegression
 import io
 
 # app is an instance of FastAPI class
-
+# you can upload data to this app and display results of linear regression modeling
 app = FastAPI()
 
 # defines the GET endpoint at the root / URL and displays the message
